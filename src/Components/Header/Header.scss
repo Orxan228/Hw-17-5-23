@@ -1,0 +1,73 @@
+.header{
+    width: 100%;
+
+    &___wapper{
+        width: 65%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+
+        &___left{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+
+            & span{
+                font-size: 20px;
+            }
+
+            &--list{
+                display: flex;
+                gap: 10px;
+
+                & li{
+                    list-style: none;
+                }
+            }
+        }
+
+        &___right button{
+            border: 1px solid black !important;
+            background-color: white !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            color: black !important;
+
+            & .span{
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: black;
+                border-radius: 10px;
+                color: white;
+            }
+            &:hover{
+                background-color: black !important;
+                color: white !important;
+            }
+
+        }
+    }
+}
+.css-1wnsr1i form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    & .button{
+        display: flex;
+        justify-content: flex-end;
+
+        & button{
+            color: black;
+        }
+    }
+}
