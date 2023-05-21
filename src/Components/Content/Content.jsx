@@ -1,7 +1,21 @@
-import React from 'react'
+import  {React, useEffect, useState} from 'react'
+import { useDispatch } from 'react-redux'
+import { add } from '../../Store/cardSlice'
+import axios from 'axios'
 import "./Content.scss"
 
 const Content = () => {
+  const dispatch = useDispatch()
+  const [data, setData] = useState([])
+
+  useEffect(()=>{
+    axios.get("https://fakestoreapi.com/products").then((res)=>{
+      setData(res.data)
+    })
+  },[data])
+ 
+  const handleAdd = (item) => {
+    dispatch(add(item))};
   return (
     <>
     <div className="content">
@@ -13,43 +27,22 @@ const Content = () => {
       </div>
       <div className="content___vitrine">
         <div className="content___vitrine___wrapper">
-          <div className="content___vitrine___wrapper___item">
-            <div className="content___vitrine___wrapper___item--top">
-              <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="" />
-            </div>
-            <div className="content___vitrine___wrapper___item--bottom">
-                <div className="content___vitrine___wrapper___item--bottom--info">
-                    <p className='item--title'>Fancy Product</p>
-                    <p className='item--price'>$40.00 - $80.00</p>
-                </div>
-                <button className='addBtn'>Add to card</button>
-            </div>
-          </div>
-          <div className="content___vitrine___wrapper___item">
-            <div className="content___vitrine___wrapper___item--top">
-              <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="" />
-            </div>
-            <div className="content___vitrine___wrapper___item--bottom">
-                <div className="content___vitrine___wrapper___item--bottom--info">
-                    <p className='item--title'>Fancy Product</p>
-                    <p className='item--price'>$40.00 - $80.00</p>
-                </div>
-                <button className='addBtn'>Add to card</button>
-            </div>
-          </div>
-          <div className="content___vitrine___wrapper___item">
-            <div className="content___vitrine___wrapper___item--top">
-              <img src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="" />
-            </div>
-            <div className="content___vitrine___wrapper___item--bottom">
-                <div className="content___vitrine___wrapper___item--bottom--info">
-                    <p className='item--title'>Fancy Product</p>
-                    <p className='item--price'>$40.00 - $80.00</p>
-                </div>
-                <button className='addBtn'>Add to card</button>
-            </div>
-          </div>
-          
+          {data.map((item,index)=>{
+            return(
+              <div key={index} className="content___vitrine___wrapper___item">
+              <div className="content___vitrine___wrapper___item--top">
+                <img src={item.image} alt="" />
+              </div>
+              <div className="content___vitrine___wrapper___item--bottom">
+                  <div className="content___vitrine___wrapper___item--bottom--info">
+                      <p className='item--title'>{item.title}</p>
+                      <p className='item--price'>{item.price} $</p>
+                  </div>
+                  <button onClick={()=>handleAdd((item))} className='addBtn'>Add to card</button>
+              </div>
+            </div> 
+            )
+          })}         
         </div>
       </div>
     </div>

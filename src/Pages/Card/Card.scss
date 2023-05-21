@@ -6,3 +6,58 @@ h3{
     font-size: 30px;
     padding: 20px 0;
 }
+.card___vitrine{
+    width: 100%;
+    border: solid;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+
+    &___wrapper___item{
+        width: 22%;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        overflow: hidden;
+
+        &--top{
+            width: 100%;
+
+            & img{
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &--bottom{
+            padding: 10px;
+            text-align: center;
+
+            &--info{
+                padding-bottom: 30px;
+
+                .item--title{
+                    padding-bottom: 5px;
+                }
+            }
+
+            & button{
+                width: 45%;
+                height: 30px;
+                background-color: white;
+                border: 1px solid black;
+                border-radius: 5px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &:hover{
+                    color: white;
+                    background-color: black;
+                    transition:linear 0.1s;
+                }
+            }
+        }
+    }
+}
